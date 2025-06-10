@@ -1,11 +1,5 @@
-
-
-
-
-
-
 import pandas as pd
-import oracledb
+import pyodbc
 import os
 import logging
 
@@ -13,61 +7,51 @@ import logging
 logging.basicConfig(filename='insert_data.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Database connection parameters
-username = "SYS"
-password = "1234Dani@ethc#"
-dsn = "AGPHOIT07.AGP.LOCAL:1521/xepdb1"
+server = r'.\SQLEXPRESS'  # Use raw string to avoid escape sequence issues
+database = 'bank_reviews'
 connection = None
 cursor = None
 
 try:
-    # Connect to Oracle as SYSDBA
-    logging.info("Attempting to connect to Oracle")
-    connection = oracledb.connect(
-        user=username,
-        password=password,
-        dsn=dsn,
-        mode=oracledb.SYSDBA
-    )
+    # Connect to SQL Server with Windows Authentication
+    logging.info("Attempting to connect to SQL Server")
+    conn_str = f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};Trusted_Connection=yes'
+    connection = pyodbc.connect(conn_str)
     cursor = connection.cursor()
-    print("Connected to Oracle")
-    logging.info("Connected to Oracle")
+    print("Connected to SQL Server")
+    logging.info("Connected to SQL Server")
 
-    # Verify connection (optional)
-    cursor.execute("SELECT * FROM v$version")
-    for row in cursor:
-        logging.info(f"Oracle Version: {row}")
-    
     # Load data
     df = pd.read_csv(r"C:\Users\Daniel.Temesgen\Desktop\Bank-Data-Review\analysis_results.csv")
     logging.info(f"Loaded {len(df)} reviews from analysis_results.csv")
 
-    # Insert banks into bank_reviews.banks
+    # Insert banks
     banks = df["bank"].unique()
     bank_id_map = {}
     for bank_name in banks:
         try:
             cursor.execute(
                 """
-                INSERT INTO bank_reviews.banks (bank_name)
-                VALUES (:1)
+                INSERT INTO dbo.banks (bank_name)
+                VALUES (?)
                 """,
-                [bank_name]
+                (bank_name,)
             )
-            cursor.execute("SELECT bank_id FROM bank_reviews.banks WHERE bank_name = :1", [bank_name])
+            cursor.execute("SELECT bank_id FROM dbo.banks WHERE bank_name = ?", (bank_name,))
             bank_id_map[bank_name] = cursor.fetchone()[0]
-        except oracledb.IntegrityError:
-            cursor.execute("SELECT bank_id FROM bank_reviews.banks WHERE bank_name = :1", [bank_name])
+        except pyodbc.IntegrityError:
+            cursor.execute("SELECT bank_id FROM dbo.banks WHERE bank_name = ?", (bank_name,))
             bank_id_map[bank_name] = cursor.fetchone()[0]
 
-    # Insert reviews into bank_reviews.reviews
+    # Insert reviews
     for _, row in df.iterrows():
         cursor.execute(
             """
-            INSERT INTO bank_reviews.reviews (
+            INSERT INTO dbo.reviews (
                 review_id, bank_id, review_text, rating, review_date,
                 sentiment_label, sentiment_score, themes, source
             )
-            VALUES (:1, :2, :3, :4, TO_DATE(:5, 'YYYY-MM-DD'), :6, :7, :8, :9)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 int(row["review_id"]),
@@ -84,19 +68,18 @@ try:
 
     # Commit changes
     connection.commit()
-    print(f"Inserted {len(df)} reviews into Oracle")
-    logging.info(f"Inserted {len(df)} reviews into Oracle")
+    print(f"Inserted {len(df)} reviews into SQL Server")
+    logging.info(f"Inserted {len(df)} reviews into SQL Server")
 
     # Verify insertion
-    cursor.execute("SELECT COUNT(*) FROM bank_reviews.reviews")
+    cursor.execute("SELECT COUNT(*) FROM dbo.reviews")
     count = cursor.fetchone()[0]
     print(f"Total reviews in database: {count}")
     logging.info(f"Total reviews in database: {count}")
 
-except oracledb.DatabaseError as e:
-    error, = e.args
-    print(f"Oracle Error: {error.code} - {error.message}")
-    logging.error(f"Oracle Error: {error.code} - {error.message}")
+except pyodbc.Error as e:
+    print(f"SQL Server Error: {e}")
+    logging.error(f"SQL Server Error: {e}")
 except Exception as e:
     print(f"Error: {e}")
     logging.error(f"Error: {e}")
@@ -108,6 +91,6 @@ finally:
 
 # Commit to Git
 if __name__ == "__main__":
-    os.system('git add scripts/insert_data.py')
-    os.system('git commit -m "Fix ORA-00942 by ensuring bank_reviews schema for Task 3"')
+    os.system('git add scripts/insert_data.py scripts/create_tables.sql')
+    os.system('git commit -m "Fix syntax errors in insert_data.py for Task 3 with SQL Server"')
     os.system('git push origin task-3')
