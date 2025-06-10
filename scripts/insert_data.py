@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(filename='insert_data.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Database connection parameters
-server = r'AGPHOIT07\SQLEXPRESS'  # Matches your SSMS connection
+server = r'AGPHOIT07\SQLEXPRESS'
 database = 'bank_reviews'
 connection = None
 cursor = None
@@ -24,6 +24,11 @@ try:
     # Load and validate data
     df = pd.read_csv(r"C:\Users\Daniel.Temesgen\Desktop\Bank-Data-Review\analysis_results.csv")
     logging.info(f"Loaded {len(df)} reviews from analysis_results.csv")
+    required_columns = ['review_id', 'bank', 'review', 'rating', 'review_date', 'sentiment_label', 'sentiment_score', 'themes', 'source']
+    missing_columns = [col for col in required_columns if col not in df.columns]
+    if missing_columns:
+        raise ValueError(f"Missing columns: {missing_columns}")
+    
     df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
     df = df.dropna(subset=['rating', 'review_id', 'sentiment_score'])
     df['rating'] = df['rating'].astype(int)
@@ -84,6 +89,9 @@ try:
 except pyodbc.Error as e:
     print(f"SQL Server Error: {e}")
     logging.error(f"SQL Server Error: {e}")
+except ValueError as e:
+    print(f"Data Error: {e}")
+    logging.error(f"Data Error: {e}")
 except Exception as e:
     print(f"Error: {e}")
     logging.error(f"Error: {e}")
@@ -96,5 +104,5 @@ finally:
 # Commit to Git
 if __name__ == "__main__":
     os.system('git add scripts/insert_data.py scripts/create_tables.sql')
-    os.system('git commit -m "Fix rating error in insert_data.py for Task 3"')
+    os.system('git commit -m "Add derived rating column and fix KeyError for Task 3"')
     os.system('git push origin task-3')
