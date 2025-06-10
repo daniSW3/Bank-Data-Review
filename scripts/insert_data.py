@@ -104,5 +104,5 @@ finally:
 # Commit to Git
 if __name__ == "__main__":
     os.system('git add scripts/insert_data.py scripts/create_tables.sql')
-    os.system('git commit -m "Add derived rating column and fix KeyError for Task 3"')
+    os.system('git commit -m "Add missing review_date and source columns for Task 3"')
     os.system('git push origin task-3')
