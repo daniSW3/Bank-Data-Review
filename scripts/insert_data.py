@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(filename='insert_data.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Database connection parameters
-server = r'.\SQLEXPRESS'  # Use raw string to avoid escape sequence issues
+server = r'AGPHOIT07\SQLEXPRESS'  # Matches your SSMS connection
 database = 'bank_reviews'
 connection = None
 cursor = None
@@ -21,9 +21,13 @@ try:
     print("Connected to SQL Server")
     logging.info("Connected to SQL Server")
 
-    # Load data
+    # Load and validate data
     df = pd.read_csv(r"C:\Users\Daniel.Temesgen\Desktop\Bank-Data-Review\analysis_results.csv")
     logging.info(f"Loaded {len(df)} reviews from analysis_results.csv")
+    df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
+    df = df.dropna(subset=['rating', 'review_id', 'sentiment_score'])
+    df['rating'] = df['rating'].astype(int)
+    df['review_id'] = df['review_id'].astype(int)
 
     # Insert banks
     banks = df["bank"].unique()
@@ -92,5 +96,5 @@ finally:
 # Commit to Git
 if __name__ == "__main__":
     os.system('git add scripts/insert_data.py scripts/create_tables.sql')
-    os.system('git commit -m "Fix syntax errors in insert_data.py for Task 3 with SQL Server"')
+    os.system('git commit -m "Fix rating error in insert_data.py for Task 3"')
     os.system('git push origin task-3')
