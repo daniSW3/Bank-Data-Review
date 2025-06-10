@@ -1,0 +1,86 @@
+2025-06-10 01:39:24,029 - INFO - Attempting to connect to Oracle
+2025-06-10 01:39:25,138 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:40:30,095 - INFO - Attempting to connect to Oracle
+2025-06-10 01:40:30,268 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 01:43:21,969 - INFO - Attempting to connect to Oracle
+2025-06-10 01:43:23,085 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:43:37,753 - INFO - Attempting to connect to Oracle
+2025-06-10 01:43:38,864 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:44:03,801 - INFO - Attempting to connect to Oracle
+2025-06-10 01:44:04,933 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:46:54,896 - INFO - Attempting to connect to Oracle
+2025-06-10 01:46:55,178 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 01:50:43,670 - INFO - Attempting to connect to Oracle
+2025-06-10 01:50:43,756 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:55:52,548 - INFO - Attempting to connect to Oracle
+2025-06-10 01:55:52,735 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 01:56:12,694 - INFO - Attempting to connect to Oracle
+2025-06-10 01:56:13,808 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 01:56:53,199 - INFO - Attempting to connect to Oracle
+2025-06-10 01:56:53,388 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 01:57:10,374 - INFO - Attempting to connect to Oracle
+2025-06-10 01:57:11,505 - ERROR - Oracle Error: 1017 - ORA-01017: invalid username/password; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+2025-06-10 02:11:04,613 - INFO - Attempting to connect to Oracle
+2025-06-10 02:11:05,097 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 02:13:29,987 - INFO - Attempting to connect to Oracle
+2025-06-10 02:13:30,199 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 11:20:01,926 - INFO - Attempting to connect to Oracle
+2025-06-10 11:20:02,648 - ERROR - Oracle Error: 28009 - ORA-28009: connection as SYS should be as SYSDBA or SYSOPER
+Help: https://docs.oracle.com/error-help/db/ora-28009/
+2025-06-10 11:28:31,765 - INFO - Attempting to connect to Oracle
+2025-06-10 11:28:32,086 - INFO - Connected to Oracle
+2025-06-10 11:28:32,132 - INFO - Oracle Version: ('Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production\nVersion 21.3.0.0.0', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 0)
+2025-06-10 11:28:32,163 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 11:28:32,178 - ERROR - Oracle Error: 942 - ORA-00942: table or view does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+2025-06-10 11:34:28,946 - INFO - Attempting to connect to Oracle
+2025-06-10 11:34:29,233 - INFO - Connected to Oracle
+2025-06-10 11:34:29,237 - INFO - Oracle Version: ('Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production\nVersion 21.3.0.0.0', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 0)
+2025-06-10 11:34:29,260 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 11:34:29,267 - ERROR - Oracle Error: 942 - ORA-00942: table or view does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+2025-06-10 11:58:49,960 - INFO - Attempting to connect to Oracle
+2025-06-10 11:58:50,182 - INFO - Connected to Oracle
+2025-06-10 11:58:50,184 - INFO - Oracle Version: ('Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production\nVersion 21.3.0.0.0', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 0)
+2025-06-10 11:58:50,195 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 11:58:50,198 - ERROR - Oracle Error: 942 - ORA-00942: table or view does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+2025-06-10 12:17:07,464 - INFO - Attempting to connect to Oracle
+2025-06-10 12:17:07,487 - ERROR - Oracle Error: 0 - DPY-6005: cannot connect to database (CONNECTION_ID=pcad7Sr84OJ0v1FJ5irF2w==).
+DPY-6001: Service "xepdb1" is not registered with the listener at host "172.16.90.152" port 1521. (Similar to ORA-12514)
+2025-06-10 14:56:47,108 - INFO - Attempting to connect to Oracle
+2025-06-10 14:56:47,321 - INFO - Connected to Oracle
+2025-06-10 14:56:47,327 - INFO - Oracle Version: ('Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production\nVersion 21.3.0.0.0', 'Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production', 0)
+2025-06-10 14:56:47,349 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 14:56:47,351 - ERROR - Oracle Error: 942 - ORA-00942: table or view does not exist
+Help: https://docs.oracle.com/error-help/db/ora-00942/
+2025-06-10 21:36:02,165 - INFO - Attempting to connect to SQL Server
+2025-06-10 21:36:02,686 - INFO - Connected to SQL Server
+2025-06-10 21:36:02,716 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 21:36:02,742 - ERROR - Error: 'rating'
+2025-06-10 21:44:35,067 - INFO - Attempting to connect to SQL Server
+2025-06-10 21:44:35,174 - INFO - Connected to SQL Server
+2025-06-10 21:44:35,185 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 21:44:35,186 - ERROR - Error: 'rating'
+2025-06-10 21:54:06,153 - INFO - Attempting to connect to SQL Server
+2025-06-10 21:54:06,343 - INFO - Connected to SQL Server
+2025-06-10 21:54:06,354 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 21:54:06,355 - ERROR - Data Error: Missing columns: ['review_date', 'source']
+2025-06-10 21:58:02,365 - INFO - Attempting to connect to SQL Server
+2025-06-10 21:58:02,513 - INFO - Connected to SQL Server
+2025-06-10 21:58:02,528 - INFO - Loaded 2448 reviews from analysis_results.csv
+2025-06-10 21:58:07,984 - INFO - Inserted 2448 reviews into SQL Server
+2025-06-10 21:58:07,985 - INFO - Total reviews in database: 2448
